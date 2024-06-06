@@ -18,8 +18,8 @@ export const ToDoItem = (props: IProps) => {
   return (
     <List.Item>
       <div className="to-do-item-content">
-        <span>{item}</span>
-        <DeleteOutlined onClick={() => deleteItem(index)} />
+        <span title={item} className="to-do-item-text">{item}</span>
+        <DeleteOutlined style={{ color: '#ff4d4f' }} onClick={() => deleteItem(index)} />
       </div>
     </List.Item>
   )

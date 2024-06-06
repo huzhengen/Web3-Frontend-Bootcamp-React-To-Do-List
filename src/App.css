@@ -58,3 +58,10 @@ header {
   display: flex;
   justify-content: space-between;
 }
+
+.to-do-item-text {
+  max-width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
