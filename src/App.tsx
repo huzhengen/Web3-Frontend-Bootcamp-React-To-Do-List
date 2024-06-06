@@ -9,12 +9,15 @@ function App() {
 
   const addTodo = (value: string) => {
     data.unshift(value)
-    setData([...data])
-    localStorage.setItem('react-to-do-list', JSON.stringify(data))
+    saveData(data)
   }
 
   const deleteTodo = (index: number) => {
     data.splice(index, 1)
+    saveData(data)
+  }
+
+  const saveData = (data: string[]) => {
     setData([...data])
     localStorage.setItem('react-to-do-list', JSON.stringify(data))
   }
