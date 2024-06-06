@@ -2,7 +2,6 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
 }
 
 .logo {
@@ -44,4 +43,18 @@
 .react-to-do-list {
   max-width: 500px;
   margin: 0 auto;
+}
+
+.add-to-do{
+  margin-bottom: 1em;
+}
+
+header {
+  text-align: center;
+}
+
+.to-do-item-content{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }

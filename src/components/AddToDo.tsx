@@ -1,20 +1,29 @@
 import { Button, Input, Space } from 'antd';
 import { useState } from 'react';
 
-export const AddToDo = () => {
+type IProps = {
+  addTodo: (value: string) => void
+}
+
+export const AddToDo = (props: IProps) => {
+  const { addTodo } = props
   const [inputValue, setInputValue] = useState('')
 
-  const addTodo = () => {
-    console.log(inputValue)
-    
+  const add = () => {
+    if (inputValue) {
+      addTodo(inputValue)
+      setInputValue('')
+    }
   }
 
   return (
-    <Space.Compact style={{ width: '100%' }}>
-      <Input value={inputValue} placeholder="Please input your todo"
-        onChange={e => setInputValue(e.target.value)}
-        onPressEnter={addTodo} />
-      <Button type="primary" onClick={addTodo}>Add Todo</Button>
-    </Space.Compact>
+    <div className="add-to-do">
+      <Space.Compact style={{ width: '100%' }}>
+        <Input value={inputValue} placeholder="Please input your todo"
+          onChange={e => setInputValue(e.target.value)}
+          onPressEnter={add} />
+        <Button type="primary" onClick={add}>Add Todo</Button>
+      </Space.Compact>
+    </div>
   )
 }
