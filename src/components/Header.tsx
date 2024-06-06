@@ -1,8 +1,12 @@
-export const Header = () => {
+type IProps = {
+  title: string
+}
+
+export const Header = (props: IProps) => {
 
   return (
     <header>
-      <h2>React-To-Do-List</h2>
+      <h2>{props.title}</h2>
     </header>
   )
 }

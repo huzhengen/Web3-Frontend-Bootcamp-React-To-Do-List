@@ -5,21 +5,19 @@ import { MyObj } from '../App';
 
 type IProps = {
   item: MyObj
-  index: number
-  deleteTodo: (index: number) => void
-  changeData: (checked: boolean, index: number) => void
+  deleteTodo: (uuid: string) => void
+  changeData: (checked: boolean, uuid: string) => void
 }
 
 export const ToDoItem = (props: IProps) => {
-  const { item, deleteTodo, index, changeData, } = props
+  const { item, deleteTodo, changeData, } = props
 
-  const deleteItem = (n: number) => {
-    deleteTodo(n)
+  const deleteItem = (uuid: string) => {
+    deleteTodo(uuid)
   }
 
   const onChange: CheckboxProps['onChange'] = (e) => {
-    console.log(`checked = ${e.target.checked}`);
-    changeData(e.target.checked, index)
+    changeData(e.target.checked, item.uuid)
   };
 
   return (
@@ -31,7 +29,8 @@ export const ToDoItem = (props: IProps) => {
             style={{ marginRight: 10 }} />
           {item.value}
         </span>
-        <DeleteOutlined style={{ color: '#ff4d4f' }} onClick={() => deleteItem(index)} />
+        <DeleteOutlined style={{ color: '#ff4d4f' }}
+          onClick={() => deleteItem(item.uuid)} />
       </div>
     </List.Item>
   )

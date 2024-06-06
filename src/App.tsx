@@ -6,18 +6,20 @@ import { useEffect, useState } from 'react'
 
 export type MyObj = {
   value: string,
-  checked: boolean
+  checked: boolean,
+  uuid: string,
 }
 
 function App() {
   const [data, setData] = useState<MyObj[]>([])
 
   const addTodo = (value: string) => {
-    data.unshift({ value, checked: false })
+    data.unshift({ value, checked: false, uuid: crypto.randomUUID(), })
     saveData(data)
   }
 
-  const deleteTodo = (index: number) => {
+  const deleteTodo = (uuid: string) => {
+    const index = data.findIndex(item => item.uuid === uuid)
     data.splice(index, 1)
     saveData(data)
   }
@@ -27,7 +29,8 @@ function App() {
     localStorage.setItem('react-to-do-list', JSON.stringify(data))
   }
 
-  const changeData = (checked: boolean, index: number) => {
+  const changeData = (checked: boolean, uuid: string) => {
+    const index = data.findIndex(item => item.uuid === uuid)
     data[index].checked = checked
     saveData(data)
   }
@@ -38,7 +41,7 @@ function App() {
 
   return (
     <div className="react-to-do-list">
-      <Header />
+      <Header title="React-To-Do-List" />
       <AddToDo addTodo={addTodo} />
       <ToDoList data={data} changeData={changeData} deleteTodo={deleteTodo} />
     </div>
