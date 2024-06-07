@@ -36,7 +36,7 @@ function App() {
   }
 
   useEffect(() => {
-    setData(JSON.parse(localStorage.getItem('react-to-do-list') || ''))
+    setData(JSON.parse(localStorage.getItem('react-to-do-list') || '[]'))
   }, [])
 
   return (
